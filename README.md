@@ -2,13 +2,51 @@
 
 A Claude Code plugin that gives you four specialised agents and 14 skills for building, reviewing, deploying, and documenting Power Apps code apps.
 
-## Install
-# pa-code-apps: Claude Code Plugin for Power Apps Code Apps
+---
 
-A Claude Code plugin that gives you four specialised agents and 14 skills for building, reviewing, deploying, and documenting Power Apps code apps.
+## Getting Started
 
+### 1. Prerequisites
 
-Requires Claude Code v1.0 or later.
+Before installing the plugin, make sure you have:
+
+- Claude Code v1.0 or later
+- Node.js v22 or later
+- Power Platform CLI (`pac`) installed: https://aka.ms/PowerAppsCLI
+- A Power Platform environment with code apps enabled
+
+To enable code apps in your environment: Power Platform admin center → Environments → Settings → Product → Features → Enable code apps.
+
+### 2. Install the plugin
+
+```
+claude plugins install github:Shayanrs31/pa-code-apps-claude-plugin
+```
+
+### 3. Build your first app
+
+Navigate to the folder where you want to create the project, then run:
+
+```
+/pa-code-apps:create-code-app
+```
+
+The plugin will ask what you want to build, design a plan with UI mockups, scaffold the React/Vite project, initialise it against your Power Platform environment, and guide you through connector setup and deployment.
+
+### 4. Add connectors
+
+```
+/pa-code-apps:add-dataverse
+/pa-code-apps:add-sharepoint
+/pa-code-apps:add-flows
+```
+
+### 5. Review and document
+
+```
+/pa-code-apps:document
+/code-review
+```
 
 ---
 
@@ -37,86 +75,58 @@ This plugin includes four agents that cover the full app lifecycle. They are inv
 
 | Skill | What it does |
 |---|---|
-| `/create-code-app` | Full scaffold-to-deploy workflow: plan, scaffold, init, build, add connectors, implement, deploy |
-| `/deploy` | Build and push the current app to Power Platform |
-| `/document` | Generate a Technical Design Document, User Guide, Handover Pack, or Architecture Overview |
+| `/pa-code-apps:create-code-app` | Full scaffold-to-deploy workflow: plan, scaffold, init, build, add connectors, implement, deploy |
+| `/pa-code-apps:deploy` | Build and push the current app to Power Platform |
+| `/pa-code-apps:document` | Generate a Technical Design Document, User Guide, Handover Pack, or Architecture Overview |
 
 ### Add connectors
 
 | Skill | Connector |
 |---|---|
-| `/add-dataverse` | Microsoft Dataverse |
-| `/add-sharepoint` | SharePoint Online |
-| `/add-office365` | Office 365 Outlook |
-| `/add-teams` | Microsoft Teams |
-| `/add-onedrive` | OneDrive for Business |
-| `/add-excel` | Excel Online |
-| `/add-azuredevops` | Azure DevOps |
-| `/add-flows` | Power Automate cloud flows (preview) |
-| `/add-connector` | Any other Power Platform connector |
-| `/add-datasource` | Generic data source discovery and add |
+| `/pa-code-apps:add-dataverse` | Microsoft Dataverse |
+| `/pa-code-apps:add-sharepoint` | SharePoint Online |
+| `/pa-code-apps:add-office365` | Office 365 Outlook |
+| `/pa-code-apps:add-teams` | Microsoft Teams |
+| `/pa-code-apps:add-onedrive` | OneDrive for Business |
+| `/pa-code-apps:add-excel` | Excel Online |
+| `/pa-code-apps:add-azuredevops` | Azure DevOps |
+| `/pa-code-apps:add-flows` | Power Automate cloud flows (preview) |
+| `/pa-code-apps:add-connector` | Any other Power Platform connector |
+| `/pa-code-apps:add-datasource` | Generic data source discovery and add |
 
 ### Utilities
 
 | Skill | What it does |
 |---|---|
-| `/list-connections` | List available connections in the current environment |
+| `/pa-code-apps:list-connections` | List available connections in the current environment |
 
 ---
 
-## Prerequisites
-
-- Node.js v22 or later
-- Power Platform CLI (`pac`) installed
-- An active Power Platform environment with code apps enabled
-- Claude Code v1.0 or later
-
-To enable code apps in your environment: Power Platform admin center → Environments → Settings → Product → Features → Enable code apps.
-
----
-
-## Usage
-
-### Start a new app
-
-/create-code-app
-
-The plugin will ask what you want to build, design a plan with UI mockups, scaffold the React/Vite project, initialise it against your environment, and guide you through connector setup and deployment.
-
-### Add a connector to an existing app
-
-/add-dataverse
-/add-sharepoint
-/add-flows
-
-
-Each skill handles discovery, adds the data source via CLI, generates typed TypeScript services, and prompts you to wire a hook.
-
-### Review before releasing
-
-/code-review
-
-Audits for critical issues (hook pattern violations, hardcoded identity, modified generated files), warnings (missing OData $top, no loading state), and suggestions.
-### Generate documentation
-/document
-
-Choose from Technical Design Document, User Guide, Handover Pack, or Architecture Overview. Output is always Markdown, rendered in chat or saved to `docs/` in your project.
----
 ## How it works
+
 The plugin enforces a strict pattern:
+
 - All connector and service calls go in `src/hooks/`. Never directly in components.
 - User identity always comes from `getContext()` via `useCurrentUser`. Never hardcoded.
 - Pages in `src/pages/`, shared UI in `src/components/`
 - Files under `src/generated/` are never edited manually
 - `pac code push` requires explicit confirmation before every deploy
+
 A `memory-bank.md` file is written to the project root after planning and updated throughout the build. This lets Claude pick up context across sessions without re-asking questions.
+
 ---
+
 ## Known issues
+
 The plugin includes a `shared/known-issues.md` file with verified fixes for four common problems:
+
 1. `trackScenario` / libuv crash: Node.js version below v22
 2. `-cr` flag invalid: use `--connectionReference` long form
 3. `MSCRM.IncludeMipSensitivityLabel` TypeScript error: add a `postgenerate` script
 4. Connection reference resolution failure: query Dataverse Web API for the real `solutionid`
+
 ---
+
 ## Author
+
 Shayan R S: https://www.linkedin.com/in/shayan-rs
