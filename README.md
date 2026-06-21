@@ -19,9 +19,19 @@ To enable code apps in your environment: Power Platform admin center → Environ
 
 ### 2. Install the plugin
 
+Clone the repo into your Claude Code skills folder:
+
+**Windows:**
 ```
-claude plugins install github:Shayanrs31/pa-code-apps-claude-plugin
+git clone https://github.com/Shayanrs31/pa-code-apps-claude-plugin.git "%USERPROFILE%\.claude\skills\pa-code-apps"
 ```
+
+**Mac / Linux:**
+```
+git clone https://github.com/Shayanrs31/pa-code-apps-claude-plugin.git ~/.claude/skills/pa-code-apps
+```
+
+Then restart Claude Code. The plugin loads automatically as `pa-code-apps@skills-dir`.
 
 ### 3. Build your first app
 
@@ -47,6 +57,26 @@ The plugin will ask what you want to build, design a plan with UI mockups, scaff
 /pa-code-apps:document
 /code-review
 ```
+
+---
+
+## Updating
+
+To get the latest version, pull from inside the skills folder:
+
+**Windows:**
+```
+cd "%USERPROFILE%\.claude\skills\pa-code-apps"
+git pull
+```
+
+**Mac / Linux:**
+```
+cd ~/.claude/skills/pa-code-apps
+git pull
+```
+
+Then restart Claude Code.
 
 ---
 
