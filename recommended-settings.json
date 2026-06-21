@@ -1,0 +1,27 @@
+{
+  "_comment": "Recommended Claude Code settings for Power Apps code app projects. Apply these in your CLAUDE.md or settings.json.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"const p = process.env.CLAUDE_FILE_PATH || ''; if (p.includes('src/generated/') || p.includes('src\\\\generated\\\\')) { console.error('BLOCKED: ' + p + ' is a generated file. Never edit files under src/generated/ - they are overwritten by pac code add-data-source.'); process.exit(1); }\"",
+            "description": "Block edits to generated files"
+          }
+        ]
+      }
+    ]
+  },
+  "editorSettings": {
+    "formatOnSave": true,
+    "defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cliNotes": {
+    "pac": "Always run pac via: pwsh -NoProfile -Command \"pac ...\" and never in bash. The pac CLI is a Windows executable.",
+    "pacInit": "Use --environment (long form) not -e. Short flag -e is invalid in pac CLI 2.4.1+.",
+    "pacPush": "Always require explicit user confirmation before running pac code push.",
+    "nodeVersion": "Node.js v22+ required. Run node --version to check before scaffolding."
+  }
+}
