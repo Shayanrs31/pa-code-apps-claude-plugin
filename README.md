@@ -55,9 +55,54 @@ The plugin will ask what you want to build, design a plan with UI mockups, scaff
 ### 5. Review and document
 
 ```
+/create-code-app
 /document
 /code-review
 ```
+
+---
+
+## Using with VS Code Copilot
+
+This repo also ships a `.github/` folder and `.vscode/` config that bring the same knowledge into GitHub Copilot agent mode in VS Code.
+
+### Setup
+
+Copy the `.github/` and `.vscode/` folders from this repo into your code app project root.
+
+Update `.vscode/mcp.json` with your Dataverse environment URL:
+
+```json
+"DATAVERSE_URL": "https://your-org.crm11.dynamics.com"
+```
+
+### What you get
+
+| File | Purpose |
+|---|---|
+| `.github/copilot-instructions.md` | Always-on rules loaded into every Copilot Chat session (hook pattern, identity, generated files) |
+| `.github/instructions/development-standards.md` | Applied automatically to all `.ts` and `.tsx` files |
+| `.github/instructions/known-issues.md` | Applied to all files — checked before every `pac code` command |
+| `.github/prompts/create-code-app.prompt.md` | Reusable prompt for scaffolding a new app |
+| `.github/prompts/add-dataverse.prompt.md` | Reusable prompt for adding Dataverse |
+| `.github/prompts/deploy.prompt.md` | Reusable prompt for building and deploying |
+| `.github/prompts/document.prompt.md` | Reusable prompt for generating documentation |
+| `.github/prompts/add-flows.prompt.md` | Reusable prompt for Power Automate flows (preview) |
+| `.github/prompts/update-csp.prompt.md` | Reusable prompt for Content Security Policy |
+| `.vscode/mcp.json` | MCP servers: Microsoft Learn docs + Dataverse |
+| `.vscode/settings.json` | Wires the instruction files into Copilot code generation |
+
+### Using the prompts
+
+In VS Code Copilot Chat (agent mode), type `/` to see available prompts or reference them directly:
+
+```
+/create-code-app
+/deploy
+/add-dataverse
+```
+
+The instruction files load automatically. No extra steps needed.
 
 ---
 

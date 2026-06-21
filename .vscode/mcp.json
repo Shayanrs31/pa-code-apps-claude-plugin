@@ -1,0 +1,17 @@
+{
+  "servers": {
+    "microsoft-learn": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@microsoft/learn-mcp-server"]
+    },
+    "dataverse": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@microsoft/dataverse-mcp-server"],
+      "env": {
+        "DATAVERSE_URL": "https://<your-org>.crm11.dynamics.com"
+      }
+    }
+  }
+}

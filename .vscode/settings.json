@@ -1,0 +1,10 @@
+{
+  "github.copilot.chat.codeGeneration.instructions": [
+    {
+      "file": ".github/instructions/development-standards.md"
+    },
+    {
+      "file": ".github/instructions/known-issues.md"
+    }
+  ]
+}
