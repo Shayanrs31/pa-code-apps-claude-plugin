@@ -1,3 +1,4 @@
+
 # pa-code-apps: Claude Code Plugin for Power Apps Code Apps
 
 A Claude Code plugin that gives you four specialised agents and 14 skills for building, reviewing, deploying, and documenting Power Apps code apps.
@@ -31,14 +32,14 @@ git clone https://github.com/Shayanrs31/pa-code-apps-claude-plugin.git "%USERPRO
 git clone https://github.com/Shayanrs31/pa-code-apps-claude-plugin.git ~/.claude/skills/pa-code-apps
 ```
 
-Then restart Claude Code. The plugin loads automatically as `pa-code-apps@skills-dir`.
+Then restart Claude Code. The plugin loads automatically.
 
 ### 3. Build your first app
 
 Navigate to the folder where you want to create the project, then run:
 
 ```
-/pa-code-apps:create-code-app
+/create-code-app
 ```
 
 The plugin will ask what you want to build, design a plan with UI mockups, scaffold the React/Vite project, initialise it against your Power Platform environment, and guide you through connector setup and deployment.
@@ -46,15 +47,15 @@ The plugin will ask what you want to build, design a plan with UI mockups, scaff
 ### 4. Add connectors
 
 ```
-/pa-code-apps:add-dataverse
-/pa-code-apps:add-sharepoint
-/pa-code-apps:add-flows
+/add-dataverse
+/add-sharepoint
+/add-flows
 ```
 
 ### 5. Review and document
 
 ```
-/pa-code-apps:document
+/document
 /code-review
 ```
 
@@ -105,30 +106,30 @@ This plugin includes four agents that cover the full app lifecycle. They are inv
 
 | Skill | What it does |
 |---|---|
-| `/pa-code-apps:create-code-app` | Full scaffold-to-deploy workflow: plan, scaffold, init, build, add connectors, implement, deploy |
-| `/pa-code-apps:deploy` | Build and push the current app to Power Platform |
-| `/pa-code-apps:document` | Generate a Technical Design Document, User Guide, Handover Pack, or Architecture Overview |
+| `/create-code-app` | Full scaffold-to-deploy workflow: plan, scaffold, init, build, add connectors, implement, deploy |
+| `/deploy` | Build and push the current app to Power Platform |
+| `/document` | Generate a Technical Design Document, User Guide, Handover Pack, or Architecture Overview |
 
 ### Add connectors
 
 | Skill | Connector |
 |---|---|
-| `/pa-code-apps:add-dataverse` | Microsoft Dataverse |
-| `/pa-code-apps:add-sharepoint` | SharePoint Online |
-| `/pa-code-apps:add-office365` | Office 365 Outlook |
-| `/pa-code-apps:add-teams` | Microsoft Teams |
-| `/pa-code-apps:add-onedrive` | OneDrive for Business |
-| `/pa-code-apps:add-excel` | Excel Online |
-| `/pa-code-apps:add-azuredevops` | Azure DevOps |
-| `/pa-code-apps:add-flows` | Power Automate cloud flows (preview) |
-| `/pa-code-apps:add-connector` | Any other Power Platform connector |
-| `/pa-code-apps:add-datasource` | Generic data source discovery and add |
+| `/add-dataverse` | Microsoft Dataverse |
+| `/add-sharepoint` | SharePoint Online |
+| `/add-office365` | Office 365 Outlook |
+| `/add-teams` | Microsoft Teams |
+| `/add-onedrive` | OneDrive for Business |
+| `/add-excel` | Excel Online |
+| `/add-azuredevops` | Azure DevOps |
+| `/add-flows` | Power Automate cloud flows (preview) |
+| `/add-connector` | Any other Power Platform connector |
+| `/add-datasource` | Generic data source discovery and add |
 
 ### Utilities
 
 | Skill | What it does |
 |---|---|
-| `/pa-code-apps:list-connections` | List available connections in the current environment |
+| `/list-connections` | List available connections in the current environment |
 
 ---
 
