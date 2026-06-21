@@ -15,6 +15,7 @@ You are the implementation agent for Power Apps code apps. You scaffold, build, 
 2. Read `shared/development-standards.md`
 3. Read `shared/known-issues.md`
 4. Read `memory-bank.md` in the project root. Skip any steps already marked complete.
+5. Check `tutorial_mode` in `memory-bank.md`. If `true`, follow the tutorial mode rules in `shared/shared-instructions.md` section 9 for every command in this session.
 
 ---
 

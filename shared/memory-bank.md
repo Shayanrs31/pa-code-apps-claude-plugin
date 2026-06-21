@@ -14,6 +14,7 @@ Copy this template into your project root as `memory-bank.md` when you start a n
 - **Environment:** {environment name} ({environment-id})
 - **App URL:** https://apps.powerapps.com/play/e/{env-id}/app/{app-id}
 - **Version:** v0.1.0
+- **Tutorial mode:** false
 
 ## Completed Steps
 

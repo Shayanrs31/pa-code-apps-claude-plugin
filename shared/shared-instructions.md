@@ -89,3 +89,33 @@ DataverseService.retrieveMultipleRecords('entity', '?$top=250&$select=col1,col2'
 ## 8. Build before deploy
 
 Always run `npm run build` and confirm it passes before running `pac code push`. Never deploy a broken build.
+
+---
+
+## 9. Tutorial mode
+
+Tutorial mode is an optional setting the user chooses at the start of a new project. When enabled, every CLI command must be presented to the user before it is run.
+
+**How to check:** Read `tutorial_mode` from `memory-bank.md` in the project root.
+
+**When tutorial_mode is true, before running any command:**
+
+1. Show the command in a code block
+2. Explain in plain language what it does and why it is needed at this step
+3. Ask: "Ready to run this? (yes to continue, no to skip)"
+4. Wait for the user's reply before executing
+
+**Example:**
+
+```
+Next command:
+
+npx degit microsoft/PowerAppsCodeApps/templates/vite my-app --force
+
+This downloads the official Power Apps code app template into a new folder called my-app.
+It does not use git clone - degit strips the git history so your project starts clean.
+
+Ready to run this? (yes to continue, no to skip)
+```
+
+**When tutorial_mode is false:** Run commands without narrating each step. Only pause for the safety guardrails in section 4 (deploy confirmation, auth clear).

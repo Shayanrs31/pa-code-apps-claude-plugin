@@ -105,6 +105,7 @@ Agents are invoked automatically by their corresponding skills. Users do not cal
 | `/add-dataverse` | PA Code |
 | `/add-connector` | PA Code |
 | `/add-flows` (preview) | PA Code |
+| `/update-csp` | PA Code |
 | `/document` | PA Document |
 
 PA Review can be invoked via `/code-review` at any time.
@@ -120,4 +121,4 @@ All agents read from `shared/` before acting:
 - `shared/known-issues.md` - 4 verified bugs with fixes (trackScenario crash, -cr flag, MSCRM TS error, connection reference resolution)
 - `shared/mockup-standards.md` - what to show per screen type, widget tool usage
 - `shared/memory-bank.md` - memory bank template and instructions
-- `shared/mcp-tools.md` - microsoft-learn MCP server setup and usage (docs search, page fetch, code samples)
+- `shared/mcp-tools.md` - microsoft-learn and Dataverse MCP server setup and usage (docs search, page fetch, code samples, table inspection)

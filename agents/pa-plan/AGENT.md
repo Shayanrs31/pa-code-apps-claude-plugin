@@ -17,6 +17,11 @@ Your job is to turn a user's idea into an approved implementation plan, complete
 2. Read `shared/development-standards.md`
 3. Read `shared/mockup-standards.md`
 4. Check the project root for `memory-bank.md`. If it exists, read it and report current state to the user before asking questions.
+5. If no `memory-bank.md` exists yet, ask the user before any other questions:
+
+> "Would you like tutorial mode? In tutorial mode, each command is shown and explained before it runs, and waits for your approval. (yes / no)"
+
+Write the answer as `tutorial_mode: true` or `tutorial_mode: false` into the memory bank when you create it at the end of Step 4.
 
 ---
 

@@ -63,9 +63,30 @@ Use when you need a working example of a specific pattern (connector call, telem
 
 ---
 
+---
+
+## Dataverse MCP server
+
+The Dataverse MCP server gives agents direct access to the connected Dataverse environment - list tables, inspect columns, run queries, and create or update records without leaving the conversation.
+
+Tools available when connected:
+
+| Tool | When to use |
+|---|---|
+| `mcp__DataverseMCPServer__list_tables` | Discover existing tables before planning a data model |
+| `mcp__DataverseMCPServer__describe_table` | Get column names, types, and relationships for a specific table |
+| `mcp__DataverseMCPServer__read_query` | Run a FetchXML or OData query to inspect live data |
+| `mcp__DataverseMCPServer__create_record` | Create a test record during development |
+| `mcp__DataverseMCPServer__update_record` | Update a record during development |
+| `mcp__DataverseMCPServer__list_prompts` | List available Copilot prompts in Dataverse |
+
+Use these tools in `pa-plan` to discover existing tables before recommending a data model, and in `pa-review` to verify column logical names before writing OData queries.
+
+---
+
 ## Setup
 
-The MCP server is configured per-project in `.vscode/mcp.json`. If the file does not exist in the project root, create it:
+Add both servers to `.vscode/mcp.json` in the project root. Create the file if it does not exist:
 
 ```json
 {
@@ -74,9 +95,17 @@ The MCP server is configured per-project in `.vscode/mcp.json`. If the file does
       "type": "stdio",
       "command": "npx",
       "args": ["-y", "@microsoft/learn-mcp-server"]
+    },
+    "dataverse": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@microsoft/dataverse-mcp-server"],
+      "env": {
+        "DATAVERSE_URL": "https://<your-org>.crm11.dynamics.com"
+      }
     }
   }
 }
 ```
 
-Restart the Claude Code session after adding the file.
+Replace `<your-org>.crm11.dynamics.com` with the URL of the Dataverse environment the app targets. Restart the Claude Code session after adding the file.
